@@ -7,8 +7,6 @@
 <script>
 import autocomplete from "autocompleter";
 
-// const emailRegexp = /$/g;
-
 export default {
   name: "App",
   mounted: function() {
@@ -34,7 +32,8 @@ export default {
         update(suggestions);
       },
       onSelect: function(item) {
-        input.value = input.value + item.label;
+        const atMarkIdx = input.value.indexOf('@');
+        input.value = input.value.slice(0, atMarkIdx + 1) + item.label;
       }
     });
   }
