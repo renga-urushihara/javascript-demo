@@ -30,25 +30,28 @@ export default {
   },
   methods: {
     onKeyDown: function(e) {
+      console.log(e);
       if (e.key === "Backspace") {
         this.keyDown.pop();
         return;
       }
-      this.keyDown.push(e.key);
+      this.keyDown.push(e.code);
     },
     onKeyPress: function(e) {
+      console.log(e);
       if (e.key === "Backspace") {
         this.keyPress.pop();
         return;
       }
-      this.keyPress.push(e.key);
+      this.keyPress.push(e.code);
     },
     onKeyUp: function(e) {
+      console.log(e);
       if (e.key === "Backspace") {
         this.keyUp.pop();
         return;
       }
-      this.keyUp.push(e.key);
+      this.keyUp.push(e.code);
     }
   }
 };
