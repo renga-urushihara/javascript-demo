@@ -15,6 +15,11 @@
       <input @keyup="onKeyUp" />
       <p>{{ this.keyUp }}</p>
     </div>
+    <div>
+      <h3>"input"</h3>
+      <input @input="onInput" />
+      <p>{{ this.input }}</p>
+    </div>
   </div>
 </template>
 
@@ -25,7 +30,8 @@ export default {
     return {
       keyDown: [],
       keyPress: [],
-      keyUp: []
+      keyUp: [],
+      input: []
     };
   },
   methods: {
@@ -35,7 +41,7 @@ export default {
         this.keyDown.pop();
         return;
       }
-      this.keyDown.push(e.code);
+      this.keyDown.push(e.keyCode);
     },
     onKeyPress: function(e) {
       console.log(e);
@@ -43,7 +49,7 @@ export default {
         this.keyPress.pop();
         return;
       }
-      this.keyPress.push(e.code);
+      this.keyPress.push(e.keyCode);
     },
     onKeyUp: function(e) {
       console.log(e);
@@ -51,7 +57,15 @@ export default {
         this.keyUp.pop();
         return;
       }
-      this.keyUp.push(e.code);
+      this.keyUp.push(e.keyCode);
+    },
+    onInput: function(e) {
+      console.log(e);
+      if (e.key === "Backspace") {
+        this.input.pop();
+        return;
+      }
+      this.input.push(e.data);
     }
   }
 };
