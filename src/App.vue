@@ -18,13 +18,13 @@ const inputTypes = {
   DELETE_CONVERTED: "deleteContentBackward"
 };
 
-var wait = function(sec) {
-  return function() {
-    return new Promise(function(resolve/*, reject*/) {
-      setTimeout(resolve, sec*1000)
-    });
-  }
-};
+// var wait = function(sec) {
+//   return function() {
+//     return new Promise(function(resolve/*, reject*/) {
+//       setTimeout(resolve, sec*1000)
+//     });
+//   }
+// };
 
 export default {
   name: "App",
@@ -40,9 +40,9 @@ export default {
       try {
         switch (e.inputType) {
           case inputTypes.UNCONVERTED_STATE: {
-            this.debug = e.data + " " + e.inputType + this.text;
-            wait(1000);
-            this.text = e.data;
+            if (e.data) {
+              this.text = e.data;
+            }
             break;
           }
           case inputTypes.CONVERETED_STATE: {
