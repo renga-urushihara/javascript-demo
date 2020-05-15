@@ -48,7 +48,7 @@ export default {
             break;
           }
           case inputTypes.DELETE_UNCONVERTED: {
-            this.bufferedText.push[this.text];
+            this.bufferedText.push(this.text);
             this.text = e.data;
             break;
           }
