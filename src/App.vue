@@ -5,8 +5,7 @@
       <input @input="onInput" />
       <p>text: {{ this.text }}</p>
       <p>trackedText: {{ this.trackedText }}</p>
-      <p>{{ this.debug }} </p>
-      <p>1 {{ this.debug1 }} </p>
+      <p>{{ this.bufferedText }} </p>
     </div>
   </div>
 </template>
@@ -32,9 +31,8 @@ export default {
   data: function() {
     return {
       text: "",
+      bufferedText: [],
       trackedText: "",
-      debug: {},
-      debug1: [],
     };
   },
   methods: {
@@ -43,27 +41,20 @@ export default {
       try {
         switch (e.inputType) {
           case inputTypes.UNCONVERTED_STATE: {
-            if (e.data) {
-              this.text = e.data;
-            }
-            if (e.data == null) {
-              this.text = "null"
-            }
+            this.text = e.data;
             break;
           }
           case inputTypes.CONVERETED_STATE: {
-            this.debug = e.data + " " + e.inputType + " " + this.text;
-            // this.trackedText = this.text;
+            this.trackedText = this.bufferedText.pop();
             break;
           }
           case inputTypes.DELETE_UNCONVERTED: {
+            this.bufferedText.push[this.text];
             this.text = e.data;
-            this.debug1 = [e.inputType];
             break;
           }
           case inputTypes.DELETE_CONVERTED: {
             this.text = e.data;
-            this.debug1 = [e.inputType];
             break;
           }
           default:
