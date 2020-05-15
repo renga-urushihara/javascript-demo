@@ -34,11 +34,12 @@ export default {
       text: "",
       trackedText: "",
       debug: {},
-      debug1: "",
+      debug1: [],
     };
   },
   methods: {
     onInput: function(e) {
+      this.debug1.push(e.inputType);
       try {
         switch (e.inputType) {
           case inputTypes.UNCONVERTED_STATE: {
@@ -57,10 +58,12 @@ export default {
           }
           case inputTypes.DELETE_UNCONVERTED: {
             this.text = e.data;
+            this.debug1 = [];
             break;
           }
           case inputTypes.DELETE_CONVERTED: {
             this.text = e.data;
+            this.debug1 = [];
             break;
           }
           default:
@@ -69,11 +72,6 @@ export default {
       } catch {
         this.text = "error";
       }
-    }
-  },
-  watch: {
-    text: function() {
-      this.debug1 = "changed";
     }
   }
 };
