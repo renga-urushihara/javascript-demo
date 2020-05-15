@@ -37,7 +37,6 @@ export default {
   },
   methods: {
     onInput: function(e) {
-      this.debug1.push(e.inputType);
       try {
         switch (e.inputType) {
           case inputTypes.UNCONVERTED_STATE: {
