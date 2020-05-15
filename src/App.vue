@@ -23,7 +23,7 @@ export default {
   methods: {
     onInput: function(e) {
       this.inputType = e.inputType ? e.inputType : "notype";
-      this.isComposing = e.isComposing;
+      this.isComposing = e.isComposing ? e.isComposing : "notype";
       this.data = e.data;
     }
   }
