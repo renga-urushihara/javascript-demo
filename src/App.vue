@@ -7,6 +7,7 @@
       <p>trackedText: {{ this.trackedText }}</p>
       <p>{{ this.bufferedText }} </p>
       <p>d {{ this.debug }} </p>
+      <p>a {{ this.a }} </p>
     </div>
   </div>
 </template>
@@ -34,7 +35,8 @@ export default {
       text: "",
       bufferedText: [],
       trackedText: "",
-      debug: []
+      debug: [],
+      a: ""
     };
   },
   methods: {
@@ -44,6 +46,7 @@ export default {
       try {
         switch (e.inputType) {
           case inputTypes.UNCONVERTED_STATE: {
+            this.a = e.composed + " " + e.data; 
             this.text = e.data;
             break;
           }
