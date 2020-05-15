@@ -32,11 +32,12 @@ export default {
       try {
         switch (e.inputType) {
           case inputTypes.UNCONVERTED_STATE: {
+            this.debug = e.data + " " + e.inputType;
             this.text = e.data;
             break;
           }
           case inputTypes.CONVERETED_STATE: {
-            this.debug = {...e};
+            this.debug = e.data + " " + e.inputType;
             this.trackedText = this.text;
             break;
           }
