@@ -3,9 +3,9 @@
     <div>
       <h3>"input"</h3>
       <input @input="onInput" />
-      <p>{{ this.inputType }}</p>
-      <p>{{ this.isComposing }}</p>
-      <p>{{ this.data }}</p>
+      <p>inputType: {{ this.inputType }}</p>
+      <p>isComposing: {{ this.isComposing }}</p>
+      <p>data: {{ this.data }}</p>
     </div>
   </div>
 </template>
@@ -22,10 +22,16 @@ export default {
   },
   methods: {
     onInput: function(e) {
-      this.inputType = e.inputType;
+      this.inputType = e.inputType ? e.inputType : "notype";
       this.isComposing = e.isComposing;
       this.data = e.data;
     }
   }
 };
 </script>
+
+<style scoped>
+  input {
+    font-size: 16px;
+  }
+</style>
