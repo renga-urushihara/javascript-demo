@@ -5,6 +5,7 @@
       <input @input="onInput" />
       <p>text: {{ this.text }}</p>
       <p>trackedText: {{ this.trackedText }}</p>
+      <p>{{ this.debug }} </p>
     </div>
   </div>
 </template>
@@ -22,7 +23,8 @@ export default {
   data: function() {
     return {
       text: "",
-      trackedText: []
+      trackedText: [],
+      debug: {}
     };
   },
   methods: {
@@ -34,6 +36,7 @@ export default {
             break;
           }
           case inputTypes.CONVERETED_STATE: {
+            this.debug = {...e};
             this.trackedText = this.text;
             break;
           }
