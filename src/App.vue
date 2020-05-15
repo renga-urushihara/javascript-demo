@@ -46,25 +46,24 @@ export default {
       try {
         switch (e.inputType) {
           case inputTypes.UNCONVERTED_STATE: {
-            this.a = e.composed + " " + e.data; 
-            this.text = e.data;
+            this.bufferedText.push(e.data);
             break;
           }
           case inputTypes.CONVERETED_STATE: {
             this.trackedText = this.bufferedText.pop();
+            this.bufferedText = [];
             break;
           }
           case inputTypes.DELETE_UNCONVERTED: {
-            this.bufferedText.push(this.text);
-            this.text = e.data;
+            this.bufferedText.pop();
             break;
           }
           case inputTypes.DELETE_CONVERTED: {
-            this.text = e.data;
+            this.bufferedText.pop();
             break;
           }
           default:
-            this.text = e.inputType;
+            this.text = "error";
         }
       } catch {
         this.text = "error";
