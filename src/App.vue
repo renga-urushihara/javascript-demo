@@ -58,12 +58,12 @@ export default {
           }
           case inputTypes.DELETE_UNCONVERTED: {
             this.text = e.data;
-            this.debug1 = [];
+            this.debug1 = [e.inputType];
             break;
           }
           case inputTypes.DELETE_CONVERTED: {
             this.text = e.data;
-            this.debug1 = [];
+            this.debug1 = [e.inputType];
             break;
           }
           default:
