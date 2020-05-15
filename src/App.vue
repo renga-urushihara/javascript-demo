@@ -6,6 +6,7 @@
       <p>text: {{ this.text }}</p>
       <p>trackedText: {{ this.trackedText }}</p>
       <p>{{ this.bufferedText }} </p>
+      <p>d {{ this.debug }} </p>
     </div>
   </div>
 </template>
@@ -33,10 +34,13 @@ export default {
       text: "",
       bufferedText: [],
       trackedText: "",
+      debug: []
     };
   },
   methods: {
+    
     onInput: function(e) {
+      this.debug.push(e.inputType);
       try {
         switch (e.inputType) {
           case inputTypes.UNCONVERTED_STATE: {
