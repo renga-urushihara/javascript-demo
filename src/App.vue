@@ -6,6 +6,7 @@
       <p>text: {{ this.text }}</p>
       <p>trackedText: {{ this.trackedText }}</p>
       <p>{{ this.debug }} </p>
+      <p>1 {{ this.debug1 }} </p>
     </div>
   </div>
 </template>
@@ -32,7 +33,8 @@ export default {
     return {
       text: "",
       trackedText: "",
-      debug: {}
+      debug: {},
+      debug1: "",
     };
   },
   methods: {
@@ -43,13 +45,16 @@ export default {
             if (e.data) {
               this.text = e.data;
             }
+            if (e.data == null) {
+              this.text = "null"
+            }
             break;
           }
-          case inputTypes.CONVERETED_STATE: {
-            this.debug = e.data + " " + e.inputType + " " + this.text;
-            this.trackedText = this.text;
-            break;
-          }
+          // case inputTypes.CONVERETED_STATE: {
+          //   this.debug = e.data + " " + e.inputType + " " + this.text;
+          //   this.trackedText = this.text;
+          //   break;
+          // }
           case inputTypes.DELETE_UNCONVERTED: {
             this.text = e.data;
             break;
@@ -64,6 +69,11 @@ export default {
       } catch {
         this.text = "error";
       }
+    }
+  },
+  watch: {
+    text: function() {
+      this.debug1 = "changed";
     }
   }
 };
