@@ -34,7 +34,7 @@ export default {
             break;
           }
           case inputTypes.CONVERETED_STATE: {
-            this.trackedText = this.data;
+            this.trackedText = this.text;
             break;
           }
           case inputTypes.DELETE_UNCONVERTED: {
@@ -45,6 +45,8 @@ export default {
             this.text = e.data;
             break;
           }
+          default:
+            this.text = e.inputType;
         }
       } catch {
         this.text = "error";
