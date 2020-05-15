@@ -50,11 +50,11 @@ export default {
             }
             break;
           }
-          // case inputTypes.CONVERETED_STATE: {
-          //   this.debug = e.data + " " + e.inputType + " " + this.text;
-          //   this.trackedText = this.text;
-          //   break;
-          // }
+          case inputTypes.CONVERETED_STATE: {
+            this.debug = e.data + " " + e.inputType + " " + this.text;
+            // this.trackedText = this.text;
+            break;
+          }
           case inputTypes.DELETE_UNCONVERTED: {
             this.text = e.data;
             break;
