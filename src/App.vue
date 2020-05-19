@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     onInput: function(e) {
-      console.log(e);
+      // console.log(e);
       this.input = e;
       this.text = e.target.value;
       switch (e.inputType) {
@@ -69,16 +69,17 @@ function f() {
   autocomplete({
     input: input,
     fetch: function(text, update) {
+      console.log(input.target);
       text = text.toLowerCase();
       var suggestions = countries.filter((n) =>
         n.label.toLowerCase().startsWith(text)
       );
       update(suggestions);
-      input.value = "";
     },
     onSelect: function(item) {
       input.value = item.label;
       input.dispatchEvent(evt);
+      input.blur();
     },
   });
 }
