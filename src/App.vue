@@ -6,6 +6,7 @@
       <p>text: {{ this.text }}</p>
       <p>input: {{ this.input }}</p>
       <p>type: {{ this.type }}</p>
+      <p>{{ change }}</p>
     </div>
   </div>
 </template>
@@ -26,7 +27,8 @@ export default {
     return {
       text: "",
       input: {},
-      type: ""
+      type: "",
+      change: 0,
     };
   },
   mounted: function() {
@@ -34,7 +36,7 @@ export default {
   },
   methods: {
     onInput: function(e) {
-      // console.log(e);
+      console.log(e);
       this.input = e;
       this.text = e.target.value;
       switch (e.inputType) {
@@ -54,6 +56,14 @@ export default {
       }
       this.type = e.inputType;
     }
+  },
+  watch: {
+    "text": {
+      deep: true,
+      handler: function() {
+        this.change = this.change + 1;
+      }
+    }
   }
 };
 
@@ -64,12 +74,11 @@ var countries = [
 
 function f() {
   var input = document.getElementById("hoge");
-  const evt = new Event("input", { bubbles: true, cancelable: true });
+  const evt = new InputEvent("input", { bubbles: true, cancelable: true });
 
   autocomplete({
     input: input,
     fetch: function(text, update) {
-      console.log(input.target);
       text = text.toLowerCase();
       var suggestions = countries.filter((n) =>
         n.label.toLowerCase().startsWith(text)
