@@ -4,6 +4,7 @@
       <h3>"input"</h3>
       <input id="hoge" v-model="text" @input="onInput" @change="onChange"/>
       <p>text: {{ this.text }}</p>
+      <p>text: {{ this.input }}</p>
       <p>change: {{ this.change }}</p>
     </div>
   </div>
