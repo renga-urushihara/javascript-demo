@@ -86,5 +86,6 @@ function f() {
 <style scoped>
 input {
   font-size: 16px;
+  -ms-ime-mode: disabled;
 }
 </style>
