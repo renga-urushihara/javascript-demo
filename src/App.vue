@@ -2,8 +2,9 @@
   <div id="app">
     <div>
       <h3>"input"</h3>
-      <input id="hoge" v-model="text" @input="onInput"/>
+      <input id="hoge" v-model="text" @input="onInput" @change="onChange"/>
       <p>text: {{ this.text }}</p>
+      <p>change: {{ this.change }}</p>
     </div>
   </div>
 </template>
@@ -23,6 +24,9 @@ export default {
   data: function() {
     return {
       text: "",
+      input: {},
+      change: {},
+      
     };
   },
   mounted: function() {
@@ -30,7 +34,7 @@ export default {
   },
   methods: {
     onInput: function(e) {
-      this.text = e.target.value;
+      this.input = e;
       switch (e.inputType) {
         case inputTypes.UNCONVERTED_STATE: {
           break;
@@ -47,6 +51,9 @@ export default {
         default:
           this.text = "error";
       }
+    },
+    onChange: function(e) {
+      this.change = e;
     }
   }
 };
