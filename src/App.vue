@@ -54,8 +54,7 @@ export default {
       }
     },
     onChange: function(e) {
-      console.log(e);
-      this.change = e;
+      alert(e.target.value);
     }
   }
 };
