@@ -74,6 +74,7 @@ function f() {
         n.label.toLowerCase().startsWith(text)
       );
       update(suggestions);
+      input.value = "";
     },
     onSelect: function(item) {
       input.value = item.label;
