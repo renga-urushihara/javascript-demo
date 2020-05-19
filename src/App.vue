@@ -35,6 +35,7 @@ export default {
   methods: {
     onInput: function(e) {
       this.input = e;
+      this.text = e.target.value;
       switch (e.inputType) {
         case inputTypes.UNCONVERTED_STATE: {
           break;
@@ -49,10 +50,10 @@ export default {
           break;
         }
         default:
-          this.text = "error";
       }
     },
     onChange: function(e) {
+      console.log(e);
       this.change = e;
     }
   }
