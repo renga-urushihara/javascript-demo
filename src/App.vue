@@ -2,7 +2,7 @@
   <div id="app">
     <div>
       <h3>"input"</h3>
-      <input id="hoge" v-model="text"/>
+      <input id="hoge" v-model="text" @input="onInput"/>
       <p>text: {{ this.text }}</p>
     </div>
   </div>
@@ -11,12 +11,12 @@
 <script>
 import autocomplete from "autocompleter";
 
-// const inputTypes = {
-//   UNCONVERTED_STATE: "insertCompositionText",
-//   CONVERETED_STATE: "insertFromComposition",
-//   DELETE_UNCONVERTED: "deleteCompositionText",
-//   DELETE_CONVERTED: "deleteContentBackward"
-// };
+const inputTypes = {
+  UNCONVERTED_STATE: "insertCompositionText",
+  CONVERETED_STATE: "insertFromComposition",
+  DELETE_UNCONVERTED: "deleteCompositionText",
+  DELETE_CONVERTED: "deleteContentBackward",
+};
 
 export default {
   name: "App",
@@ -28,6 +28,27 @@ export default {
   mounted: function() {
     f();
   },
+  methods: {
+    onInput: function(e) {
+      this.text = e.target.value;
+      switch (e.inputType) {
+        case inputTypes.UNCONVERTED_STATE: {
+          break;
+        }
+        case inputTypes.CONVERETED_STATE: {
+          break;
+        }
+        case inputTypes.DELETE_UNCONVERTED: {
+          break;
+        }
+        case inputTypes.DELETE_CONVERTED: {
+          break;
+        }
+        default:
+          this.text = "error";
+      }
+    }
+  }
 };
 
 var countries = [
