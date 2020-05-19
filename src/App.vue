@@ -2,10 +2,10 @@
   <div id="app">
     <div>
       <h3>"input"</h3>
-      <input id="hoge" v-model="text" @input="onInput" @change="onChange"/>
+      <input id="hoge" v-model="text" @input="onInput"/>
       <p>text: {{ this.text }}</p>
-      <p>text: {{ this.input }}</p>
-      <p>change: {{ this.change }}</p>
+      <p>input: {{ this.input }}</p>
+      <p>type: {{ this.type }}</p>
     </div>
   </div>
 </template>
@@ -26,8 +26,7 @@ export default {
     return {
       text: "",
       input: {},
-      change: {},
-      
+      type: ""
     };
   },
   mounted: function() {
@@ -35,6 +34,7 @@ export default {
   },
   methods: {
     onInput: function(e) {
+      console.log(e);
       this.input = e;
       this.text = e.target.value;
       switch (e.inputType) {
@@ -52,9 +52,7 @@ export default {
         }
         default:
       }
-    },
-    onChange: function(e) {
-      alert(e.target.value);
+      this.type = e.inputType;
     }
   }
 };
