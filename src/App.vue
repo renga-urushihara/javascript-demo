@@ -58,7 +58,6 @@ export default {
           break;
         }
       }
-      this.data = e.data;
       this.type = e.inputType;
     },
   },
