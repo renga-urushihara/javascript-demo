@@ -4,7 +4,7 @@
       <h3>"input"</h3>
       <input id="hoge" @input="onInput" />
       <p>type: {{ this.type }}</p>
-      <p>{{ change }}</p>
+      <p>count {{ change }}</p>
       <p>datas: {{ datas }}</p>
     </div>
   </div>
