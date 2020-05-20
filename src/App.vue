@@ -37,7 +37,6 @@ export default {
   methods: {
     onInput: function(e) {
       const inputType = e.inputType;
-      alert(inputType);
       switch (inputType) {
         case inputTypes.UNCONVERTED_STATE: {
           this.datas.push(e.data);
