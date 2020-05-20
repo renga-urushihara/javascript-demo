@@ -38,14 +38,14 @@ export default {
     onInput: function(e) {
       switch (e.inputType) {
         case inputTypes.UNCONVERTED_STATE: {
-          alert(inputTypes.UNCONVERTED_STATE);
           this.datas.push(e.data);
           break;
         }
         case inputTypes.CONVERTED_STATE: {
-          alert(inputTypes.CONVERTED_STATE, this.datas.pop());
+          const a = this.data.pop();
+          alert(2, a);
           this.data = e.data;
-          this.datas.length = 0;
+          // this.datas.length = 0;
           break;
         }
         case inputTypes.DELETE_UNCONVERTED: {
