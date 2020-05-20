@@ -43,13 +43,13 @@ export default {
           break;
         }
         case inputTypes.CONVERTED_STATE: {
-          const a = this.datas.pop();
+          const a = this.datas[-1];
           this.data = a;
           // this.datas.length = 0;
           break;
         }
         case inputTypes.DELETE_UNCONVERTED: {
-          this.datas.pop();
+          // this.datas.pop();
           break;
         }
         case inputTypes.DELETE_CONVERTED: {
