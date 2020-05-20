@@ -6,7 +6,7 @@
       <p>type: {{ this.type }}</p>
       <p>count {{ change }}</p>
       <p>datas: {{ datas }}</p>
-      f: {{a}}
+      f: {{data}}
     </div>
   </div>
 </template>
@@ -43,6 +43,7 @@ export default {
         }
         case inputTypes.CONVERTED_STATE: {
           console.log(this.datas.pop());
+          this.data = e.data;
           this.datas.length = 0;
           break;
         }
