@@ -44,8 +44,7 @@ export default {
         }
         case inputTypes.CONVERTED_STATE: {
           const a = this.datas.pop();
-          console.log(a);
-          this.data = e.data;
+          this.data = a;
           // this.datas.length = 0;
           break;
         }
