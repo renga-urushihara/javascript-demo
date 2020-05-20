@@ -2,12 +2,10 @@
   <div id="app">
     <div>
       <h3>"input"</h3>
-      <input id="hoge" v-model="text" @input="onInput"/>
-      <p>text: {{ this.text }}</p>
-      <p>input: {{ this.input }}</p>
+      <input id="hoge" @input="onInput" />
       <p>type: {{ this.type }}</p>
       <p>{{ change }}</p>
-      <p>data: {{data}}</p>
+      <p>datas: {{ datas }}</p>
     </div>
   </div>
 </template>
@@ -17,7 +15,7 @@ import autocomplete from "autocompleter";
 
 const inputTypes = {
   UNCONVERTED_STATE: "insertCompositionText",
-  CONVERETED_STATE: "insertFromComposition",
+  CONVERTED_STATE: "insertFromComposition",
   DELETE_UNCONVERTED: "deleteCompositionText",
   DELETE_CONVERTED: "deleteContentBackward",
 };
@@ -26,11 +24,10 @@ export default {
   name: "App",
   data: function() {
     return {
-      text: "",
-      input: {},
       type: "",
       change: 0,
-      data: ""
+      data: "",
+      datas: [],
     };
   },
   mounted: function() {
@@ -38,36 +35,37 @@ export default {
   },
   methods: {
     onInput: function(e) {
-      console.log(e);
-      this.input = e;
-      this.text = e.target.value;
-      this.data = e.data;
       switch (e.inputType) {
         case inputTypes.UNCONVERTED_STATE: {
+          this.datas.push(e.data);
           break;
         }
-        case inputTypes.CONVERETED_STATE: {
+        case inputTypes.CONVERTED_STATE: {
+          console.log(this.datas.pop());
+          this.datas.slice(0);
           break;
         }
         case inputTypes.DELETE_UNCONVERTED: {
+          this.datas.pop();
           break;
         }
         case inputTypes.DELETE_CONVERTED: {
+          this.datas.pop();
           break;
         }
-        default:
       }
+      this.data = e.data;
       this.type = e.inputType;
-    }
+    },
   },
   watch: {
-    "text": {
+    text: {
       deep: true,
       handler: function() {
         this.change = this.change + 1;
-      }
-    }
-  }
+      },
+    },
+  },
 };
 
 var countries = [
