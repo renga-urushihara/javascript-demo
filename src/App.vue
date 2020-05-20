@@ -7,6 +7,7 @@
       <p>input: {{ this.input }}</p>
       <p>type: {{ this.type }}</p>
       <p>{{ change }}</p>
+      <p>data: {{data}}</p>
     </div>
   </div>
 </template>
@@ -29,6 +30,7 @@ export default {
       input: {},
       type: "",
       change: 0,
+      data: ""
     };
   },
   mounted: function() {
@@ -39,6 +41,7 @@ export default {
       console.log(e);
       this.input = e;
       this.text = e.target.value;
+      this.data = e.data;
       switch (e.inputType) {
         case inputTypes.UNCONVERTED_STATE: {
           break;
