@@ -38,11 +38,12 @@ export default {
     onInput: function(e) {
       switch (e.inputType) {
         case inputTypes.UNCONVERTED_STATE: {
+          alert(inputTypes.UNCONVERTED_STATE);
           this.datas.push(e.data);
           break;
         }
         case inputTypes.CONVERTED_STATE: {
-          console.log(this.datas.pop());
+          alert(inputTypes.CONVERTED_STATE, this.datas.pop());
           this.data = e.data;
           this.datas.length = 0;
           break;
