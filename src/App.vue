@@ -6,6 +6,7 @@
       <p>type: {{ this.type }}</p>
       <p>count {{ change }}</p>
       <p>datas: {{ datas }}</p>
+      f: {{a}}
     </div>
   </div>
 </template>
@@ -27,7 +28,7 @@ export default {
       type: "",
       change: 0,
       data: "",
-      datas: [],
+      datas: []
     };
   },
   mounted: function() {
@@ -42,7 +43,7 @@ export default {
         }
         case inputTypes.CONVERTED_STATE: {
           console.log(this.datas.pop());
-          this.datas.slice(0);
+          this.datas.length = 0;
           break;
         }
         case inputTypes.DELETE_UNCONVERTED: {
