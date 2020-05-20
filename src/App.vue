@@ -42,8 +42,8 @@ export default {
           break;
         }
         case inputTypes.CONVERTED_STATE: {
-          const a = this.data.pop();
-          alert(2, a);
+          const a = this.datas.pop();
+          alert(a);
           this.data = e.data;
           // this.datas.length = 0;
           break;
